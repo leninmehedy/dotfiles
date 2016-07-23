@@ -385,7 +385,7 @@ nnoremap <leader>mq :MarkedQuit<cr>
 let g:vimwiki_map_prefix = '<Leader>o'
 
 " change wiki path 
-let g:vimwiki_list = [{'path': '/Users/nick/Google Drive/vimwiki'}]
+" let g:vimwiki_list = [{'path': '/Users/nick/Google Drive/vimwiki'}]
 
 " heading highlighting
 let g:vimwiki_hl_headers = 1
