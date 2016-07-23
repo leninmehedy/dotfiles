@@ -34,6 +34,7 @@ Plug 'itspriddle/vim-marked', { 'for': 'markdown', 'on': 'MarkedOpen' } " Open m
 Plug 'shougo/unite.vim' " generic fuzzy finder for lists (ie. amazing!)
 Plug 'shougo/unite-outline' " show unite list of headings for the current buffer (function names, structs, variables etc)
 Plug 'ujihisa/unite-colorscheme' " show unite list of available colorschemes
+Plug 'terryma/vim-multiple-cursors' " multiple cursor similar to sublime
 
 " Language specific
 Plug 'fatih/vim-go', { 'for': 'go' } " go support
