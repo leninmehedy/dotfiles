@@ -69,6 +69,9 @@ if hash brew 2>/dev/null; then
 	source `brew --prefix`/etc/profile.d/z.sh
 fi
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
 # commented out while I'm trying 'true' solarized instead of base16 version
 # BASE16_SHELL="$DOTFILES/.config/base16-shell/$THEME.$BACKGROUND.sh"
 # source $BASE16_SHELL
