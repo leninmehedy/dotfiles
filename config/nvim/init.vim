@@ -41,8 +41,7 @@ Plug 'zchee/deoplete-go', { 'do': 'make'} " go autocompletion
 
 call plug#end()
 
-" }}}
-
+"}}}
 " General Setting {{{
 
 " mapleader
@@ -75,7 +74,20 @@ set tabstop=4 "set the tab width to 4 spaces
 set softtabstop=4 " edit as if the tabs are 4 characters wide
 set shiftwidth=4 " number of spaces to use for indent and unindent
 set shiftround " round indent to a multiple of 'shiftwidth
+set noexpandtab " do not expand tabs
 autocmd FileType haskell setlocal expandtab " Use spaces instead of tabs for haskell files
+
+" TrimWhitespace removes whitespaces from the end of lines
+fun! TrimWhitespace()
+    let l:save_cursor = getpos('.')
+    %s/\s\+$//e
+    call setpos('.', l:save_cursor)
+endfun
+command! Tw call TrimWhitespace()
+
+" Show hiddent characters
+set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
+set list
 
 " smarter searching
 set ignorecase " case insensitive searching
@@ -87,7 +99,7 @@ set magic " make searching use normal regex (grep)
 " Change the backgroud for search terms to purple
 " https://upload.wikimedia.org/wikipedia/en/1/15/Xterm_256color_chart.svg
 " http://stackoverflow.com/questions/7103173/vim-how-to-change-the-highlight-color-for-search-hits-and-quickfix-selection
-hi Search ctermbg=55  
+hi Search ctermbg=55
 
 " Line number management
 " http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
@@ -119,8 +131,7 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 " make read read *.raml files as yaml
 autocmd BufNewFile,BufRead *.raml set filetype=yaml
 
-" }}}
-
+" }}}"}}}
 " Keymappings {{{
 
 " remap esc
@@ -191,7 +202,6 @@ inoremap <right> <nop>
 nnoremap <leader>. :call NumberToggle()<cr>
 
 " }}}
-
 " Functions {{{
 
 function! NumberToggle()
@@ -205,7 +215,6 @@ function! NumberToggle()
 endfunc
 
 " }}}
-
 " Plugins settings {{{
 
 " vim-airline
@@ -218,10 +227,10 @@ set timeoutlen=20 "gets rid of the pause when leaving insert mode
 " prefs https://github.com/ryanoasis/nerd-fonts
 set guifont=Fura\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h14 " won't work in macvim without this line
 let g:airline_theme='base16'
-" buffers to emulate tabs 
+" buffers to emulate tabs
 " let g:airline#extensions#tabline#enabled = 1 " enable the list of buffers at the top of the screen
 " let g:airline#extensions#tabline#fnamemod = ':t' " show just the filename in the buffer list
-" remove the patched arrows 
+" remove the patched arrows
 let g:airline_powerline_fonts=0
 let g:airline_left_sep=''
 let g:airline_right_sep=''
@@ -286,11 +295,11 @@ noremap <Leader>vq :VimuxCloseRunner<CR>
 " Zoom the runner pane (use <bind-key> z to restore runner pane)
 noremap <Leader>vz :call VimuxZoomRunner()<CR>
 
-" Fugitive 
+" Fugitive
 " --------
-nnoremap <silent> <leader>gs :Gstatus<cr> 
+nnoremap <silent> <leader>gs :Gstatus<cr>
 " Revert current file back to last checked in version - HEAD (:Git checkout %)
-nnoremap <silent> <leader>gr :Gread<cr>  
+nnoremap <silent> <leader>gr :Gread<cr>
 " Stage the current file to the index (:Git add %)
 nnoremap <silent> <leader>gw :Gwrite<cr>
 nnoremap <silent> <leader>ge :Gedit<cr>
@@ -338,7 +347,7 @@ let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'vetshadow', 'ineffassi
 " gometalinter command when executed via :GoMetaLinter
 " au FileType go autocmd BufWritePre * :GoMetaLinter
 let g:go_metalinter_command="gometalinter --disable-all --enable=vet
-			\ --enable=vetshadow --enable=golint --enable=ineffassign --enable=goconst --enable=gofmt" 
+			\ --enable=vetshadow --enable=golint --enable=ineffassign --enable=goconst --enable=gofmt"
 " let g:go_metalinter_command="gometalinter --disable=vetshadow --disable=test
 "		 \ --disable=testify --disable=errcheck --linter='vet:go tool vet -composites=false ./*.go:PATH:LINE:MESSAGE'"
 
@@ -384,13 +393,10 @@ nnoremap <leader>mq :MarkedQuit<cr>
 " change the default global prefix to o for 'organiser'
 let g:vimwiki_map_prefix = '<Leader>o'
 
-" change wiki path 
-" let g:vimwiki_list = [{'path': '/Users/nick/Google Drive/vimwiki'}]
-
-" heading highlighting
+"heading highlighting
 let g:vimwiki_hl_headers = 1
 
-" unbind tpope/vim-unimpaired bindings that interfere with vimwiki '=' 
+" unbind tpope/vim-unimpaired bindings that interfere with vimwiki '='
 " normal mode binding
 " http://vim.wikia.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1)
 autocmd VimEnter * nunmap =p
@@ -424,20 +430,19 @@ endfunction
 " mappings for unite lists
 " nnoremap <leader>a :UniteWithProjectDir file_rec/neovim<cr>
 " projects list
-nnoremap <leader>l :Unite -default-action=lcd bookmark<cr> 
+nnoremap <leader>l :Unite -default-action=lcd bookmark<cr>
 " heading in the current buffer
-nnoremap <leader>bj :Unite outline<cr> 
+nnoremap <leader>bj :Unite outline<cr>
 " change colorscheme (atm only works in gui nvim for some reason...)
-nnoremap <leader>T :Unite colorscheme<cr> 
+nnoremap <leader>T :Unite colorscheme<cr>
 " help ex commands
-nnoremap <leader>hc :Unite command<cr> 
+nnoremap <leader>hc :Unite command<cr>
 " help key mappings
-nnoremap <leader>hm :Unite mapping<cr> 
+nnoremap <leader>hm :Unite mapping<cr>
 " help functions
-nnoremap <leader>hf :Unite function<cr> 
+nnoremap <leader>hf :Unite function<cr>
 
 " }}}
-
 " GUI settings {{{
 
 " Macvim settings
