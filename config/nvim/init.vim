@@ -40,6 +40,8 @@ Plug 'terryma/vim-multiple-cursors' " multiple cursor similar to sublime
 Plug 'fatih/vim-go', { 'for': 'go' } " go support
 Plug 'zchee/deoplete-go', { 'do': 'make'} " go autocompletion
 
+Plug 'zchee/deoplete-jedi' " python autocompletion
+
 call plug#end()
 
 "}}}
@@ -307,6 +309,7 @@ nnoremap <silent> <leader>ge :Gedit<cr>
 nnoremap <silent> <leader>gc :Gcommit<cr>
 nnoremap <silent> <leader>gb :Gblame<cr>
 nnoremap <silent> <leader>gd :Gdiff<cr>
+nnoremap <silent> <leader>gt :go test<cr>
 
 " deoplete
 " --------

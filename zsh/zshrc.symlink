@@ -32,7 +32,7 @@ export EDITOR='nvim'
 
 # GOPATH
 export GOPATH=$HOME/code
-export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOPATH/bin:~/mybin
 
 # add brew path to the start of PATH env var
 export PATH=/usr/local/bin:$PATH
@@ -100,3 +100,4 @@ export NVM_DIR="$HOME/.nvm"
 #bindkey -s "^[Om" "-"
 #bindkey -s "^[Oj" "*"
 #bindkey -s "^[Oo" "/"
+alias c=clear
